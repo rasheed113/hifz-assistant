@@ -166,4 +166,4 @@ A feature is not complete because a screen exists. It must include:
 
 ## 10. Current implementation status
 
-The repository foundation and initial Flutter UI shell are being established. The current shell is not yet a complete Android platform project and does not contain Quran datasets, audio assets, authentication, backend schema, speech recognition, live correction, or planner logic. These are intentionally deferred until their sources and acceptance criteria are established.
+The Flutter foundation includes a bundled, source-attributed Tanzil Quran Metadata v1.0 catalog with 114 surahs and 6,236 ayah references, an integrity-validating repository, and an English/Urdu searchable Surah index. This is structural metadata only: no Quran ayah text, translation, audio, authentication, backend schema, speech recognition, live correction, or planner logic is implemented yet. Quran text editions remain a separate release gate pending source/script review and qualified verification.
