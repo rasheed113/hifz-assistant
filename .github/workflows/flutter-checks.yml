@@ -35,6 +35,9 @@ jobs:
       - name: Resolve dependencies
         run: flutter pub get
 
+      - name: Print formatted main.dart for diagnosis
+        run: dart format --output=show lib/main.dart
+
       - name: Check formatting
         run: dart format --output=none --set-exit-if-changed lib test
 
