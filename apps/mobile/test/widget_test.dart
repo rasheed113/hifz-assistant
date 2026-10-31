@@ -19,6 +19,9 @@ void main() {
     await tester.tap(find.text('Urdu'));
     await tester.pumpAndSettle();
 
+    await tester.tap(find.text('ہوم'));
+    await tester.pumpAndSettle();
+
     expect(find.text('حفظ اسسٹنٹ'), findsOneWidget);
     expect(find.text('آپ کا حفظ کا سفر یہاں سے شروع ہوتا ہے'), findsOneWidget);
   });
