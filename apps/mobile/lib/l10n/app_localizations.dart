@@ -10,7 +10,10 @@ class AppLocalizations {
 
   final Locale locale;
 
-  static const supportedLocales = <Locale>[Locale('en'), Locale('ur')];
+  static const supportedLocales = <Locale>[
+    Locale('en'),
+    Locale('ur'),
+  ];
 
   static AppLocalizations of(BuildContext context) {
     final result =
