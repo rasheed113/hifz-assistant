@@ -46,3 +46,12 @@ docs/
 ## Development rule
 
 Do not commit unverified Quran text/audio, fabricated recognition results, mock learning progress, or claims of perfect Tajweed detection. Every feature must have explicit acceptance criteria and tests.
+
+
+## Quran catalog foundation
+
+The Android app now bundles the **Tanzil Quran Metadata v1.0** surah catalog: 114 surahs and 6,236 ayah references. It includes Arabic surah names, transliterations, English names, ayah counts, revelation type/order, ruku counts, and zero-based global ayah start indexes. The app validates the catalog totals and continuous indexes before showing it.
+
+**Important:** this is structural metadata only. No Arabic ayah text, translation, audio, or recitation assessment is bundled or claimed to be implemented in this phase. Quran text editions (Indo-Pak and Uthmani) will be separately sourced, licensed, versioned, and reviewed before they are displayed.
+
+Metadata attribution: **Tanzil Project — Quran Metadata v1.0**, CC BY 3.0. Source: https://tanzil.net/docs/Quran_Metadata. Original metadata download: https://tanzil.net/res/text/metadata/quran-data.xml. The copy used to bootstrap this catalog was retrieved from the public mirror myquranapp/quran-data at commit 890c49cd61a3684b4bdebba0b62b2eed78811831; the upstream source remains Tanzil Project. See the in-app Quran catalog source label and apps/mobile/assets/quran/surahs.json provenance.
