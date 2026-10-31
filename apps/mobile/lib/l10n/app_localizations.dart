@@ -43,7 +43,8 @@ class AppLocalizations {
       'manzil': 'Manzil',
       'learningModes': 'Recitation modes',
       'instantMode': 'Instant Ustaad Mode',
-      'instantDescription': 'Pause and review when a likely mistake is detected.',
+      'instantDescription':
+          'Pause and review when a likely mistake is detected.',
       'ayahMode': 'Ayat Completion Mode',
       'ayahDescription': 'Review the recitation after completing an ayah.',
       'comingNext': 'Coming in a later development phase',
@@ -93,8 +94,7 @@ class _AppLocalizationsDelegate
   const _AppLocalizationsDelegate();
 
   @override
-  bool isSupported(Locale locale) =>
-      AppLocalizations.supportedLocales.any(
+  bool isSupported(Locale locale) => AppLocalizations.supportedLocales.any(
         (supported) => supported.languageCode == locale.languageCode,
       );
 
