@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'features/quran/presentation/quran_library_page.dart';
 import 'l10n/app_localizations.dart';
 
 void main() {
@@ -109,10 +110,7 @@ class _HifzHomePageState extends State<HifzHomePage> {
     final strings = AppLocalizations.of(context);
     final pages = [
       _HomeContent(onOpenPlanner: () => setState(() => _selectedIndex = 2)),
-      _PlaceholderPage(
-        title: strings.text('quran'),
-        description: strings.text('comingNext'),
-      ),
+      const QuranLibraryPage(),
       _PlaceholderPage(
         title: strings.text('planner'),
         description: strings.text('comingNext'),
