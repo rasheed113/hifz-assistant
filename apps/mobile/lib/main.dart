@@ -25,7 +25,8 @@ class _HifzAssistantAppState extends State<HifzAssistantApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      onGenerateTitle: (context) => AppLocalizations.of(context).text('appName'),
+      onGenerateTitle: (context) =>
+          AppLocalizations.of(context).text('appName'),
       debugShowCheckedModeBanner: false,
       locale: _locale,
       supportedLocales: AppLocalizations.supportedLocales,
