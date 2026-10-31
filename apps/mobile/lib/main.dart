@@ -402,17 +402,25 @@ class _ProfileContent extends StatelessWidget {
           style: Theme.of(context).textTheme.titleLarge,
         ),
         const SizedBox(height: 12),
-        RadioListTile<String>(
-          value: 'en',
+        RadioGroup<String>(
           groupValue: locale.languageCode,
-          title: Text(strings.text('english')),
-          onChanged: (_) => onLocaleChanged(const Locale('en')),
-        ),
-        RadioListTile<String>(
-          value: 'ur',
-          groupValue: locale.languageCode,
-          title: Text(strings.text('urdu')),
-          onChanged: (_) => onLocaleChanged(const Locale('ur')),
+          onChanged: (value) {
+            if (value != null) {
+              onLocaleChanged(Locale(value));
+            }
+          },
+          child: Column(
+            children: [
+              RadioListTile<String>(
+                value: 'en',
+                title: Text(strings.text('english')),
+              ),
+              RadioListTile<String>(
+                value: 'ur',
+                title: Text(strings.text('urdu')),
+              ),
+            ],
+          ),
         ),
       ],
     );
