@@ -1,13 +1,28 @@
 import 'package:flutter_test/flutter_test.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:hifz_assistant/main.dart';
 
 void main() {
+  setUp(() => SharedPreferences.setMockInitialValues({}));
+
   testWidgets('shows the Hifz home screen in English', (tester) async {
     await tester.pumpWidget(const HifzAssistantApp());
 
     expect(find.text('Hifz Assistant'), findsOneWidget);
     expect(find.text('Your Hifz journey starts here'), findsOneWidget);
     expect(find.text('Sabaq'), findsOneWidget);
+  });
+
+  testWidgets('restores the saved Urdu language on startup', (tester) async {
+    SharedPreferences.setMockInitialValues({
+      'preferred_language_code': 'ur',
+    });
+
+    await tester.pumpWidget(const HifzAssistantApp());
+    await tester.pumpAndSettle();
+
+    expect(find.text('حفظ اسسٹنٹ'), findsOneWidget);
+    expect(find.text('آپ کا حفظ کا سفر یہاں سے شروع ہوتا ہے'), findsOneWidget);
   });
 
   testWidgets('allows switching the interface to Urdu', (tester) async {
