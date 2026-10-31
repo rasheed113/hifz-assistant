@@ -20,7 +20,9 @@ class QuranCatalogRepository {
     final metadata = document['metadata'] as Map<String, dynamic>;
     if (metadata['source'] != 'Tanzil Project' ||
         metadata['version'] != '1.0') {
-      throw const FormatException('Unexpected Quran metadata source or version.');
+      throw const FormatException(
+        'Unexpected Quran metadata source or version.',
+      );
     }
     final rawSurahs = document['surahs'] as List<dynamic>;
     final surahs = rawSurahs
