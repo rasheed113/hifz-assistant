@@ -35,6 +35,13 @@ jobs:
       - name: Resolve dependencies
         run: flutter pub get
 
+      - name: Diagnose formatter output
+        run: |
+          cp lib/l10n/app_localizations.dart /tmp/app_localizations.dart.before
+          dart format lib test
+          diff -u /tmp/app_localizations.dart.before lib/l10n/app_localizations.dart || true
+          cp /tmp/app_localizations.dart.before lib/l10n/app_localizations.dart
+
       - name: Check formatting
         run: dart format --output=none --set-exit-if-changed lib test
 
