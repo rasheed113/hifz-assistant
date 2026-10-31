@@ -5,8 +5,8 @@ import 'package:flutter/services.dart';
 import 'quran_surah.dart';
 
 class QuranCatalogRepository {
-  const QuranCatalogRepository({AssetBundle assetBundle = rootBundle})
-    : _assetBundle = assetBundle;
+  QuranCatalogRepository({AssetBundle? assetBundle})
+    : _assetBundle = assetBundle ?? rootBundle;
 
   static const assetPath = 'assets/quran/surahs.json';
   static const expectedSurahCount = 114;
@@ -17,6 +17,11 @@ class QuranCatalogRepository {
   Future<List<QuranSurah>> loadSurahs() async {
     final source = await _assetBundle.loadString(assetPath);
     final document = jsonDecode(source) as Map<String, dynamic>;
+    final metadata = document['metadata'] as Map<String, dynamic>;
+    if (metadata['source'] != 'Tanzil Project' ||
+        metadata['version'] != '1.0') {
+      throw const FormatException('Unexpected Quran metadata source or version.');
+    }
     final rawSurahs = document['surahs'] as List<dynamic>;
     final surahs = rawSurahs
         .map(
