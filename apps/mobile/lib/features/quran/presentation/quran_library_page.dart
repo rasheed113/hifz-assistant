@@ -95,9 +95,9 @@ class _QuranLibraryPageState extends State<QuranLibraryPage> {
                 children: [
                   Text(
                     strings.text('surahCount').replaceAll(
-                      '{count}',
-                      filteredSurahs.length.toString(),
-                    ),
+                          '{count}',
+                          filteredSurahs.length.toString(),
+                        ),
                     style: Theme.of(context).textTheme.bodySmall,
                   ),
                   const Spacer(),
