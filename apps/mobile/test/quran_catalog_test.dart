@@ -4,7 +4,8 @@ import 'package:hifz_assistant/features/quran/data/quran_catalog_repository.dart
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
-  test('loads the complete 114-surah catalog with 6,236 ayah references', () async {
+  test('loads the complete 114-surah catalog with 6,236 ayah references',
+      () async {
     final surahs = await QuranCatalogRepository().loadSurahs();
 
     expect(surahs, hasLength(QuranCatalogRepository.expectedSurahCount));
