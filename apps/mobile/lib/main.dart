@@ -104,13 +104,16 @@ class HifzHomePage extends StatefulWidget {
 
 class _HifzHomePageState extends State<HifzHomePage> {
   int _selectedIndex = 0;
+  bool _quranPageInitialized = false;
 
   @override
   Widget build(BuildContext context) {
     final strings = AppLocalizations.of(context);
     final pages = [
       _HomeContent(onOpenPlanner: () => setState(() => _selectedIndex = 2)),
-      const QuranLibraryPage(),
+      _quranPageInitialized
+          ? const QuranLibraryPage()
+          : const SizedBox.shrink(),
       _PlaceholderPage(
         title: strings.text('planner'),
         description: strings.text('comingNext'),
@@ -147,8 +150,12 @@ class _HifzHomePageState extends State<HifzHomePage> {
       ),
       bottomNavigationBar: NavigationBar(
         selectedIndex: _selectedIndex,
-        onDestinationSelected: (index) =>
-            setState(() => _selectedIndex = index),
+        onDestinationSelected: (index) {
+          setState(() {
+            _selectedIndex = index;
+            if (index == 1) _quranPageInitialized = true;
+          });
+        },
         destinations: [
           NavigationDestination(
             icon: const Icon(Icons.home_outlined),
