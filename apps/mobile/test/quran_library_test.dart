@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:hifz_assistant/features/quran/presentation/quran_library_page.dart';
+import 'package:hifz_assistant/main.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
+  setUp(() => SharedPreferences.setMockInitialValues({}));
+
   testWidgets('shows real surah metadata and supports search', (tester) async {
-    await tester.pumpWidget(
-      const MaterialApp(
-        home: Scaffold(body: QuranLibraryPage()),
-      ),
-    );
+    await tester.pumpWidget(const HifzAssistantApp());
+    await tester.pumpAndSettle();
+
+    await tester.tap(find.text('Quran'));
     await tester.pumpAndSettle();
 
     expect(find.text('Al-Faatiha'), findsOneWidget);
