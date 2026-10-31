@@ -42,8 +42,7 @@ class _HifzAssistantAppState extends State<HifzAssistantApp> {
 
   Future<void> _changeLocale(Locale locale) async {
     if (!AppLocalizations.supportedLocales.any(
-      (supportedLocale) =>
-          supportedLocale.languageCode == locale.languageCode,
+      (supportedLocale) => supportedLocale.languageCode == locale.languageCode,
     )) {
       return;
     }
@@ -457,3 +456,4 @@ class _ProfileContent extends StatelessWidget {
     );
   }
 }
+
