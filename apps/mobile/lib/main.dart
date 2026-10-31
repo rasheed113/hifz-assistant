@@ -47,14 +47,6 @@ class _HifzAssistantAppState extends State<HifzAssistantApp> {
           surfaceTintColor: Colors.transparent,
           elevation: 0,
         ),
-        cardTheme: CardThemeData(
-          color: Colors.white,
-          elevation: 0,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20),
-            side: const BorderSide(color: Color(0xFFE6ECE8)),
-          ),
-        ),
       ),
       home: HifzHomePage(
         locale: _locale,
