@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'l10n/app_localizations.dart';
 
@@ -16,10 +17,40 @@ class HifzAssistantApp extends StatefulWidget {
 }
 
 class _HifzAssistantAppState extends State<HifzAssistantApp> {
+  static const _localePreferenceKey = 'preferred_language_code';
+
   Locale _locale = const Locale('en');
 
-  void _changeLocale(Locale locale) {
+  @override
+  void initState() {
+    super.initState();
+    _restoreLocale();
+  }
+
+  Future<void> _restoreLocale() async {
+    final preferences = await SharedPreferences.getInstance();
+    final savedLanguage = preferences.getString(_localePreferenceKey);
+    if (!mounted || savedLanguage == null) return;
+
+    final supportedLanguage = AppLocalizations.supportedLocales.any(
+      (locale) => locale.languageCode == savedLanguage,
+    );
+    if (supportedLanguage) {
+      setState(() => _locale = Locale(savedLanguage));
+    }
+  }
+
+  Future<void> _changeLocale(Locale locale) async {
+    if (!AppLocalizations.supportedLocales.any(
+      (supportedLocale) =>
+          supportedLocale.languageCode == locale.languageCode,
+    )) {
+      return;
+    }
+
     setState(() => _locale = locale);
+    final preferences = await SharedPreferences.getInstance();
+    await preferences.setString(_localePreferenceKey, locale.languageCode);
   }
 
   @override
