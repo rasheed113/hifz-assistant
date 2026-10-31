@@ -6,7 +6,7 @@ import 'quran_surah.dart';
 
 class QuranCatalogRepository {
   QuranCatalogRepository({AssetBundle? assetBundle})
-    : _assetBundle = assetBundle ?? rootBundle;
+      : _assetBundle = assetBundle ?? rootBundle;
 
   static const assetPath = 'assets/quran/surahs.json';
   static const expectedSurahCount = 114;
