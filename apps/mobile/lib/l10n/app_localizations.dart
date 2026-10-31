@@ -43,7 +43,8 @@ class AppLocalizations {
       'meccan': 'Meccan',
       'medinan': 'Medinan',
       'rukuCount': 'Rukus',
-      'ayahTextComingAfterVerification': 'Verified Quran text will be added separately after source and script review.',
+      'ayahTextComingAfterVerification':
+          'Verified Quran text will be added separately after source and script review.',
       'retry': 'Try again',
       'planner': 'My plan',
       'profile': 'Profile',
@@ -85,7 +86,8 @@ class AppLocalizations {
       'meccan': 'مکی',
       'medinan': 'مدنی',
       'rukuCount': 'رکوع',
-      'ayahTextComingAfterVerification': 'مستند قرآن متن کو ماخذ اور رسم الخط کے جائزے کے بعد الگ شامل کیا جائے گا۔',
+      'ayahTextComingAfterVerification':
+          'مستند قرآن متن کو ماخذ اور رسم الخط کے جائزے کے بعد الگ شامل کیا جائے گا۔',
       'retry': 'دوبارہ کوشش کریں',
       'planner': 'میرا منصوبہ',
       'profile': 'پروفائل',
