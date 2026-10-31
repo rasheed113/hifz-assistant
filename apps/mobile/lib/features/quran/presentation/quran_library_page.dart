@@ -19,7 +19,7 @@ class _QuranLibraryPageState extends State<QuranLibraryPage> {
   @override
   void initState() {
     super.initState();
-    _surahsFuture = const QuranCatalogRepository().loadSurahs();
+    _surahsFuture = QuranCatalogRepository().loadSurahs();
     _searchController.addListener(_onSearchChanged);
   }
 
@@ -37,7 +37,7 @@ class _QuranLibraryPageState extends State<QuranLibraryPage> {
 
   void _retryLoad() {
     setState(() {
-      _surahsFuture = const QuranCatalogRepository().loadSurahs();
+      _surahsFuture = QuranCatalogRepository().loadSurahs();
     });
   }
 
