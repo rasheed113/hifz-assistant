@@ -1,6 +1,6 @@
 # Indo-Pak Quran Text Integration
 
-**Status:** Source and integration decision accepted; implementation is gated on Quran Foundation production access.
+**Status:** Indo-Pak source decision accepted. A Cloudflare Worker prelive Content API proxy is now implemented; full Quran Content Sync and production content remain gated on the required access and validation.
 
 ## Decision
 
@@ -24,14 +24,16 @@ The documented `quran_core:1` snapshot contains canonical Quran records, includi
 
 ## Access and environment gate
 
-- Production Content API base: `https://apis.quran.foundation/content/api/v4`.
+- Content API prelive base: `https://apis-prelive.quran.foundation/content/api/v4`; production base: `https://apis.quran.foundation/content/api/v4`.
 - Prelive contains only Al-Fatihah and Al-Baqarah. It cannot validate a complete 114-surah Quran release.
-- Production access must be approved in the Quran Foundation Developer Console.
-- Requests require the registered `x-client-id` and a valid `x-auth-token`.
-- Register Hifz Assistant as a mobile application and use the supported mobile OAuth/PKCE flow; never embed a client secret in the APK.
-- Keep tokens out of source control, logs, crash reports, and analytics.
+- Production access must be approved in the Quran Foundation Developer Console before switching environments.
+- Content APIs use OAuth2 Client Credentials with `scope=content` from a **Backend/server app**. The token endpoint is `/oauth2/token` on the matching environment's OAuth host.
+- Authenticated Content API calls require both `x-auth-token` and `x-client-id`.
+- Hifz Assistant's Cloudflare Worker stores `QF_CLIENT_ID` and `QF_CLIENT_SECRET` as Cloudflare secrets and proxies `GET /quran/chapters`. The Worker defaults to `QF_ENV=prelive`.
+- The Flutter app must call the Worker; it must never receive the client secret or make the confidential token request itself.
+- Never commit secrets or access tokens, or write them to logs, crash reports, or analytics.
 
-**Implementation is blocked until production access and a supported token flow are available.** Do not substitute demo credentials or silently fall back to an unlicensed bundled dataset.
+The current Worker implements the first authenticated Content API request only. It does **not** implement Content Sync, download Quran text, or make the complete Quran available. Do not substitute demo credentials or silently fall back to an unlicensed bundled dataset.
 
 ## Content Sync requirements
 
